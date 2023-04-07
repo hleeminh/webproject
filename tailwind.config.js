@@ -10,8 +10,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      oswald: 'Oswald, sans-serif',
-      urbanist: 'Urbanist, sans-serif',
+      roboto: 'Roboto, sans-serif',
     },
     extend: {},
     screens:{
