@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -24,6 +24,92 @@
   letter-spacing: 1px;
 }
 
+.flexCol {
+  @apply flex flex-col;
+}
+
+.flexRow {
+  @apply flex flex-row;
+}
+
+.iconCart {
+  @apply w-8 md:w-12 h-8 md:h-12 flex justify-center items-center
+  cursor-pointer relative transition ease-in-out bg-white hover:-translate-y-1 hover:scale-105 duration-150;
+}
+
+.quantityInCart {
+  @apply h-[14px] md:h-[18px] min-w-[14px] md:min-w-[18px] rounded-full
+  bg-red-600 absolute top-1 left-5 md:left-7 text-white text-[10px] md:text-[12px]
+  flex justify-center items-center px-[2px] md:px-[5px];
+}
+
+.btnAddToCart {
+  @apply p-4  bg-slate-900 text-white text-lg
+  font-medium transition-transform active:scale-95 hover:bg-black/[0.1] hover:text-black;
+}
+
+.btnCheckOut {
+  @apply p-3 rounded-full bg-red-700 text-white text-lg
+  font-medium transition-transform active:scale-95 hover:bg-red-600;
+}
+
+.btnCounter {
+  @apply flex justify-center items-center w-6 h-6 border rounded border-gray-200 m-2 hover:border-gray-300 transition-transform active:scale-75;
+}
+
+.bg-gray {
+  background-color: #f8f8f8;
+}
+
+.bg-gray-light {
+  background-color: #fafafa;
+}
+
+a {
+  @apply text-black hover:text-slate-500;
+}
+
+.fjcic {
+  @apply flex justify-center items-center;
+}
+
+.letspace0 {
+  @apply tracking-[0px];
+}
+
+.subtext {
+  @apply text-[#6f6f6f] text-sm;
+}
+
+.card {
+  @apply flex flex-col transform overflow-hidden duration-200 hover:scale-105 cursor-pointer shadow-md;
+}
+
+.primary-button {
+  @apply rounded py-2 px-4 shadow outline-none bg-black hover:bg-black/[0.1] text-white hover:text-black;
+}
+.default-button {
+  @apply rounded bg-gray-100 py-2  px-4 text-black shadow outline-none hover:bg-gray-200  active:bg-gray-300;
+}
+
+input,
+select,
+textarea {
+  @apply rounded border p-2  outline-none ring-indigo-300  focus:ring;
+}
+
+.dropdown-link {
+  @apply flex p-2 hover:bg-gray-200;
+}
+
+.alert-error {
+  @apply my-3 rounded-lg bg-red-100 p-3 text-red-700;
+}
+
+.alert-success {
+  @apply my-3 rounded-lg bg-green-100 p-3 text-green-700;
+}
+
 /* PRODUCT DETAILS CAROUSEL STYLING CUSTOMIZATION START */
 
 .productCarousel.carousel-root {
@@ -40,7 +126,7 @@
 .productCarousel.carousel-root .carousel.carousel-slider .slider-wrapper {
   border-radius: 10px;
 }
-.productCarousel.carousel-root .carousel .thumbs-wrapper { 
+.productCarousel.carousel-root .carousel .thumbs-wrapper {
   margin: 0;
 }
 .productCarousel.carousel-root .carousel .thumb {
@@ -55,8 +141,8 @@
   object-fit: cover;
   object-position: center;
 }
-.productCarousel.carousel-root .carousel .thumb:after{
-  content: "";
+.productCarousel.carousel-root .carousel .thumb:after {
+  content: '';
   width: 100%;
   height: 100%;
   position: absolute;
@@ -78,24 +164,24 @@
 }
 @media screen and (max-width: 767px) {
   .productCarousel.carousel-root {
-      flex-direction: column;
+    flex-direction: column;
   }
   .productCarousel.carousel-root .carousel .thumb {
-      border: 0;
-      padding: 0;
+    border: 0;
+    padding: 0;
   }
 }
 @media screen and (min-width: 768px) {
   .productCarousel.carousel-root .carousel .thumbs {
-      transform: none !important;
-      flex-direction: column;
-      display: flex;
-      gap: 10px;
+    transform: none !important;
+    flex-direction: column;
+    display: flex;
+    gap: 10px;
   }
   .productCarousel.carousel-root .carousel .thumb {
-      border: 0;
-      padding: 0;
-      margin: 0;
+    border: 0;
+    padding: 0;
+    margin: 0;
   }
 }
 /* PRODUCT DETAILS CAROUSEL STYLING CUSTOMIZATION END */
