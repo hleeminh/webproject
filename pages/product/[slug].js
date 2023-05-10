@@ -1,35 +1,34 @@
-import Layout from '@/components/Layout';
 import React, { useContext, useEffect } from 'react';
-import data from '@/utils/data';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
 import Image from 'next/image';
 import Title from '@/components/Title';
 import { Store } from '@/utils/Store';
+import db from '@/utils/db';
+import Product from '@/models/Product';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
-const ProductScreen = () => {
+const ProductScreen = (props) => {
+  const { product } = props;
   const VND = new Intl.NumberFormat('vi-VN', {
     style: 'currency',
     currency: 'VND',
   });
 
-  const { query } = useRouter();
-  const { slugFile } = query;
-
-  //   const product = data.products.filter((product) => product.slug === slug)[0];
-  const product = data.products.find((product) => product.slug === slugFile);
-
   const { state, dispatch } = useContext(Store);
 
-  const addToCartHandler = () => {
+  const addToCartHandler = async () => {
     const existItem = state.cart.cartItems.find(
       (item) => item.slug === product.slug
     );
     const quantity = existItem ? existItem.quantity + 1 : 1;
 
-    if (product.countInStock < quantity) {
-      alert('Xin lỗi, sản phẩm này tạm hết hàng');
-      return;
+    // const { data } = await axios.get(`/api/products/${product._id}`);
+    const res = await fetch(`/api/products/${product._id}`);
+    const data = await res.json();
+    console.log(data.countInStock);
+
+    if (data.countInStock < quantity) {
+      return toast.error('Xin lỗi, sản phẩm này tạm hết hàng!');
     }
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
   };
@@ -108,3 +107,17 @@ const ProductScreen = () => {
 };
 
 export default ProductScreen;
+
+export async function getServerSideProps(context) {
+  const { params } = context;
+  const { slug } = params;
+
+  await db.connect();
+  const product = await Product.findOne({ slug }).lean();
+  await db.disconnect();
+  return {
+    props: {
+      product: product ? db.convertDocToObj(product) : null,
+    },
+  };
+}

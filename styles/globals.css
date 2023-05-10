@@ -81,13 +81,51 @@ a {
   @apply text-[#6f6f6f] text-sm;
 }
 
+.drop-animation {
+  animation: growDown 350ms ease-in-out forwards;
+  transform-origin: top center;
+}
+
+@keyframes growDown {
+  0% {
+    transform: scaleY(0);
+  }
+  80% {
+    transform: scaleY(1.1);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
 .card {
   @apply flex flex-col transform overflow-hidden duration-200 hover:scale-105 cursor-pointer shadow-md;
 }
 
-.primary-button {
-  @apply rounded py-2 px-4 shadow outline-none bg-black hover:bg-black/[0.1] text-white hover:text-black;
+.cardPlaceOrder {
+  @apply block rounded-lg border border-gray-200 shadow-md bg-white hover:bg-slate-200 cursor-pointer mb-5;
 }
+
+.checkOutContainer {
+  @apply mb-5 block rounded-lg border border-gray-200 shadow-md;
+}
+
+.primary-button {
+  @apply rounded py-2 px-4 shadow outline-none bg-slate-800 hover:bg-black/[0.1] text-white hover:text-black;
+}
+
+.search-button {
+  @apply rounded py-2 px-2 shadow outline-none bg-slate-800 hover:bg-black/[0.1] text-white hover:text-black;
+}
+
+.next-button {
+  @apply rounded py-2 pl-2 shadow outline-none bg-slate-800 hover:bg-black/[0.1] text-white hover:text-black;
+}
+
+.back-button {
+  @apply rounded py-2 pr-2 shadow outline-none hover:bg-slate-800 bg-black/[0.1] hover:text-white text-black;
+}
+
 .default-button {
   @apply rounded bg-gray-100 py-2  px-4 text-black shadow outline-none hover:bg-gray-200  active:bg-gray-300;
 }
@@ -112,7 +150,7 @@ textarea {
 
 /* PRODUCT DETAILS CAROUSEL STYLING CUSTOMIZATION START */
 
-.productCarousel.carousel-root {
+/* .productCarousel.carousel-root {
   display: flex;
   flex-direction: row-reverse;
   gap: 15px;
@@ -186,7 +224,7 @@ textarea {
 }
 /* PRODUCT DETAILS CAROUSEL STYLING CUSTOMIZATION END */
 
-.markdown ul {
+/* .markdown ul {
   margin: 0;
   padding: 0;
   list-style-type: disc;
@@ -194,4 +232,4 @@ textarea {
 }
 .markdown ul li {
   margin: 10px 0;
-}
+} */
