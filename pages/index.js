@@ -5,6 +5,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Title from '@/components/Title';
 import db from '@/utils/db';
 import Product from '@/models/Product';
+import Image from 'next/image';
 
 export default function Home({ products, featuredProducts }) {
   return (

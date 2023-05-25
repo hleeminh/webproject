@@ -34,8 +34,7 @@ export default function PlaceOrderScreen() {
 
   const [loading, setLoading] = useState(false);
 
-  const placeOrderHandler = async (e) => {
-    e.preventDefault();
+  const placeOrderHandler = async () => {
     try {
       setLoading(true);
       const { data } = await axios.post('/api/orders', {
@@ -121,7 +120,7 @@ export default function PlaceOrderScreen() {
                     <tr className=''>
                       <th className='p-5'>Sản phẩm</th>
                       <th className='p-5'>Đơn giá</th>
-                      <th className='p-5 '>Số lượng</th>
+                      <th className='p-5'>Số lượng</th>
                       <th className='p-5'>Tổng tiền</th>
                       <th className='p-5'>Thao tác</th>
                     </tr>

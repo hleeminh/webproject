@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import Image from 'next/image';
 
 const ProductItem = ({ product }) => {
   const VND = new Intl.NumberFormat('vi-VN', {
